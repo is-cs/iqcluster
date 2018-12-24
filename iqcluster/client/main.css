@@ -1,0 +1,65 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+h1 {
+margin: 0px;
+padding: 0px;
+// background-color: red;
+width: 20%;
+float: left;
+}
+
+.login-div {
+  float: left;
+margin-top: 10px;
+}
+
+.header-div {
+  height: 40px;
+  margin: 0px;
+  padding: 0px;
+  background: #000;
+  color: #fff;
+  clear: both;
+}
+
+.stats-div {
+  margin: 10px;
+}
+
+.stats-label {
+  padding-bottom: 5px;
+}
+
+.stats-table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+.stats-td,.stat-td {
+  padding: 5px;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+.stat-td:first-child {
+width: 20%;
+}
+
+.stat-td:nth-child(2) {
+width: 50%;
+}
+.content-div {
+margin-top: 20px;
+}
+
+#createJobForm {
+border: 1px solid #c0c0c0;
+margin-top: 20px;
+padding-bottom: 10px;
+}
+
+.formRow {
+  margin-top: 20px;
+}

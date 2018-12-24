@@ -1,0 +1,133 @@
+<head>
+  <title>iqcluster</title>
+</head>
+
+<body>
+  <div class="header-div">
+  <h1>IqCluster</h1>
+  <div class="login-div">{{> loginButtons}}</div>
+  </div>
+  {{#if currentUser }}
+  <div class="container content-div">
+    <div class="row">
+      <div class="col-sm-2">
+        {{> clusterstats}}
+      </div>
+      <div class="col-sm-9">
+         <button type="button" class="btn btn-primary" data-toggle="collapse" href="#createJobForm">+ Create Job</button>
+      <div class="collapse" id="createJobForm">
+        <form class="newJobForm">
+          <div class="container">
+            <div class="row formRow">
+               <div class="col-sm-1">Command</div>
+               <div class="col-sm-4">
+                 <input type="text" id="command-input" name="command" placeholder="command to execute" />
+               </div>
+            </div>
+            <div class="row formRow">
+               <div class="col-sm-1">NumProcs</div>
+               <div class="col-sm-4">
+          <input type="text" id="numprocs-input" name="numprocs" placeholder="#processes" maxlength="1" /></div>
+            </div>
+            <div class="row formRow">
+               <div class="col-sm-1">Exclude</div>
+               <div class="col-sm-4">
+                  <input type="checkbox" id="cmaster" name="master" />master&nbsp;&nbsp;
+                  <input type="checkbox" id="cnode001" name="node001" />node001&nbsp;&nbsp;
+                  <input type="checkbox" id="cnode002" name="node002" />node002&nbsp;&nbsp;
+                  <input type="checkbox" id="cnode003" name="node003" />node003&nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="row formRow">
+               <div class="col-sm-1">Queue</div>
+               <div class="col-sm-4">
+                  <input type="radio" name="queue" value="standard" />standard&nbsp;&nbsp;
+                  <input type="radio" name="queue" value="priority" />priority&nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="row formRow"><div class="col-sm-2">
+          <button type="submit" class="btn btn-primary newJobSubmitBtn">Submit Job</button></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div style="margin-top: 10px;">
+         <table class="stats-table">
+            <tr>
+	       <th class="stat-td">createdAt</th>
+	       <th class="stat-td">command</th>
+	       <th class="stats-td">numprocs</th>
+	       <th class="stats-td">queue</th>
+	       <th class="stats-td">scheduled</th>
+	       <th class="stats-td">master</th>
+	       <th class="stats-td">node001</th>
+	       <th class="stats-td">node002</th>
+	       <th class="stats-td">node003</th>
+	    </tr>
+	    {{#each jobs}}
+              <tr>
+		<td class="stat-td">{{createdAt}}</td>
+		<td class="stat-td">{{cmd}}</td>
+		<td class="stats-td">{{numprocs}}</td>
+		<td class="stats-td">{{queue}}</td>
+		<td class="stats-td">{{scheduled}}</td>
+		<td class="stats-td">{{master_status}}</td>
+		<td class="stats-td">{{node001_status}}</td>
+		<td class="stats-td">{{node002_status}}</td>
+		<td class="stats-td">{{node003_status}}</td>
+	      </tr>
+	    {{/each}}
+         </table>
+      </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+  <!-- {{> hello}}
+  {{> info}}-->
+</body>
+
+<template name="clusterstats">
+  <div class="stats-div">
+    <div class="stats-label"><b>Cluster Usage</b></div>
+    <table class="stats-table">
+      <tr class="stats-tr">
+        <th class="stats-td">Node</th>
+        <th class="stats-td">#JobsRunning</th>
+      </tr>
+      {{#each stats}}
+      <tr class="stats-tr">
+        <td class="stats-td">master</td>
+        <td class="stats-td">{{master}}</td>
+      </tr>
+      <tr class="stats-tr">
+        <td class="stats-td">node001</td>
+        <td class="stats-td">{{node001}}</td>
+      </tr>
+      <tr class="stats-tr">
+        <td class="stats-td">node002</td>
+        <td class="stats-td">{{node002}}</td>
+      </tr>
+      <tr class="stats-tr">
+        <td class="stats-td">node003</td>
+        <td class="stats-td">{{node003}}</td>
+      </tr>
+      {{/each}}
+    </table>
+  </div>
+</template>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
+    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
+    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
+    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
+  </ul>
+</template>
